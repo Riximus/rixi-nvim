@@ -23,7 +23,8 @@ vim.g.maplocalleader = "\\"
 
 vim.o.number = true
 vim.o.wrap = false
-vim.o.tabstop = 2
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
 vim.o.signcolumn = "yes"
 vim.o.completeopt = "menu,menuone,fuzzy,preview"
 vim.o.winborder = "rounded"

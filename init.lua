@@ -8,7 +8,7 @@ require('mini.move').setup()
 require('mini.cursorword').setup()
 
 vim.diagnostic.config({
-	-- virtual_lines = true, -- swap with virtual text if lines are preferred
+	--virtual_lines = true, -- swap with virtual text if lines are preferred
 	virtual_text = { current_line = true },
 	-- underline = true,
 	float = { border = "rounded" },
