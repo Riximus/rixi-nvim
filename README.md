@@ -83,82 +83,114 @@
 
 # Keybindings
 
-## Global
-- n: <leader>w → :write
-- n: <leader>q → :quit
-- n: <Tab>n → :tabnext
-- n: <Tab>p → :tabprevious
-- n: <Tab>c → :tabclose
-- n: <Tab>o → :tabonly
-- n: <Tab>1..9 → 1gt..9gt
+Leader key: `<Space>` (this config sets `vim.g.mapleader = " "`).
+Notation: All key tokens in angle brackets are literal keys (wrapped in backticks so they render). Examples: `<Tab>`, `<C-w>`, `<F1>`.
+
+## Core / Tabs
+| Mode | Keys              | Action |
+|------|-------------------|--------|
+| n    | `<leader>w`       | Write buffer |
+| n    | `<leader>q`       | Quit |
+| n    | `<Tab>n`          | Next tab |
+| n    | `<Tab>p`          | Previous tab |
+| n    | `<Tab>c`          | Close tab |
+| n    | `<Tab>o`          | Close other tabs |
+| n    | `<Tab>1`..`<Tab>9`| Go to tab 1..9 |
 
 ## Dropbar
-- n: <leader>; → Pick symbols in winbar
+| Mode | Keys        | Action |
+|------|-------------|--------|
+| n    | `<leader>;` | Pick symbols in winbar |
 
 ## Flash
-- n,x,o: s → Flash jump
-- n,x,o: S → Flash Treesitter
-- o: r → Remote Flash
-- o,x: R → Treesitter search
-- c: <C-s> → Toggle Flash search
+| Mode        | Keys     | Action |
+|-------------|----------|--------|
+| n / x / o   | `s`      | Flash jump |
+| n / x / o   | `S`      | Flash Treesitter |
+| o           | `r`      | Remote Flash |
+| o / x       | `R`      | Treesitter search |
+| c           | `<C-s>`  | Toggle Flash search |
 
 ## Harpoon
-- n: <leader>H → Add current file
-- n: <leader>h → Toggle quick menu
-- n: <leader>1..5 → Jump to file 1..5
-- n: <leader>h0 → Clear all marks
+| Mode | Keys        | Action |
+|------|-------------|--------|
+| n    | `<leader>H` | Harpoon add file |
+| n    | `<leader>h` | Harpoon quick menu |
+| n    | `<leader>1`..`<leader>5` | Harpoon file 1..5 |
+| n    | `<leader>h0`| Harpoon clear all |
 
 ## Menu
-- n,x: <RightMouse> → Context menu at cursor
+| Mode    | Keys           | Action |
+|---------|----------------|--------|
+| n / x   | `<RightMouse>` | Context menu |
 
 ## Neo-tree
-- n: <leader>e → :Neotree toggle
-- n: <leader>o → :Neotree focus
-- n: <leader>fe → :Neotree reveal
-- In Neo-tree window: t → tabnew, h → split, v → vsplit
+| Mode | Keys         | Action |
+|------|--------------|--------|
+| n    | `<leader>e`  | Toggle Neo-tree |
+| n    | `<leader>o`  | Focus Neo-tree |
+| n    | `<leader>fe` | Reveal current file |
+| neo-tree win | `t`  | Open in new tab |
+| neo-tree win | `h`  | Horizontal split |
+| neo-tree win | `v`  | Vertical split |
 
-## Neovim Project
-- n: <leader>fp → Telescope neovim-project discover
+## Projects
+| Mode | Keys         | Action |
+|------|--------------|--------|
+| n    | `<leader>fp` | Find projects (Telescope) |
 
-## nvim-spectre
-- n: <leader>S → Toggle Spectre
-- n: <leader>sw → Search current word
-- x: <leader>sw → Search selection
-- n: <leader>sp → Search in current file
+## Spectre (Search/Replace)
+| Mode | Keys        | Action |
+|------|-------------|--------|
+| n    | `<leader>S` | Toggle Spectre |
+| n    | `<leader>sw`| Search current word |
+| x    | `<leader>sw`| Search selection |
+| n    | `<leader>sp`| Search in current file |
 
-## nvim-window
-- n: <C-w><C-w> → Pick window
+## Window Picker
+| Mode | Keys          | Action |
+|------|---------------|--------|
+| n    | `<C-w><C-w>`  | Pick window |
 
 ## Telescope
-- n: <leader>ff → Find files
-- n: <leader>gf → Git files
-- n: <leader>fg → Live grep
-- n: <leader>fb → Buffers
-- n: <leader>fr → Recent files (cwd)
-- n: <leader><space> → Switch buffer
+| Mode | Keys              | Action |
+|------|-------------------|--------|
+| n    | `<leader>ff`      | Find files |
+| n    | `<leader>gf`      | Git files |
+| n    | `<leader>fg`      | Live grep |
+| n    | `<leader>fb`      | Buffers |
+| n    | `<leader>fr`      | Recent files (cwd) |
+| n    | `<leader><Space>` | Switch buffer |
 
 ## Telescope Undo
-- n: <leader>u → Telescope undo
+| Mode | Keys        | Action |
+|------|-------------|--------|
+| n    | `<leader>u` | Undo history picker |
 
 ## Trouble
-- n: <leader>xx → Toggle diagnostics list
+| Mode | Keys        | Action |
+|------|-------------|--------|
+| n    | `<leader>xx`| Toggle diagnostics list |
 
-## Yazi
-- n,x: <leader>- → Open at current file
-- n: <leader>cw → Open at CWD
-- n: <C-Up> → Toggle/resume last session
-- In Yazi: <F1> → Show help
+## Yazi (File Manager)
+| Mode    | Keys        | Action |
+|---------|-------------|--------|
+| n / v   | `<leader>-` | Open at current file |
+| n       | `<leader>cw`| Open at CWD |
+| n       | `<C-Up>`    | Toggle / resume last session |
+| In Yazi | `<F1>`      | Show help |
 
 ## Multicursor
-- n,x: <leader>n → Add cursor (next match)
-- n,x: <leader>s → Skip cursor (next match)
-- n,x: <leader>N → Add cursor (prev match)
-- n,x: <leader>S → Skip cursor (prev match)
-- n: <C-LeftMouse>/<C-LeftDrag>/<C-LeftRelease> → Mouse add/drag/release cursors
-- n,x: <C-q> → Toggle enable/disable cursors
-- Active when multicursor is enabled:
-  - n,x: <Left>/<Right> → Prev/next cursor
-  - n,x: <leader>x → Delete main cursor
-  - n,x: <Up>/<Down> → Line-wise add cursor up/down
-  - n,x: <leader><Up>/<leader><Down> → Line-wise skip cursor up/down
-  - n: <Esc> → Enable if disabled, else clear all cursors
+| Mode      | Keys                                | Action |
+|-----------|-------------------------------------|--------|
+| n / x     | `<leader>n`                         | Add cursor (next) |
+| n / x     | `<leader>N`                         | Add cursor (prev) |
+| n / x     | `<leader>s`                         | Skip next match |
+| n / x     | `<leader>S`                         | Skip prev match |
+| n         | `<C-LeftMouse>` / `<C-LeftDrag>` / `<C-LeftRelease>` | Mouse add/drag/release cursors |
+| n / x     | `<C-q>`                             | Toggle multicursor enable |
+| active    | `<Left>` / `<Right>`                | Prev / next cursor |
+| active    | `<leader>x`                         | Delete main cursor |
+| active    | `<Up>` / `<Down>`                   | Add cursor up/down |
+| active    | `<leader><Up>` / `<leader><Down>`   | Skip cursor up/down |
+| active n  | `<Esc>`                             | Enable (if disabled) / clear all |
