@@ -20,6 +20,14 @@ return {
 					{ name = "@vue/typescript-plugin", languages = { "vue" }, location = "" },
 				},
 			},
+			settings = {
+				typescript = {
+					inlayHints = {
+						parameterNames = { enabled = "all" },
+						parameterTypes = { enabled = true },
+					},
+				},
+			},
 			on_new_config = function(new_config, root_dir)
 				-- If the plugin exists locally, point to it; otherwise leave as a non-empty string.
 				local local_plugin = util.path.join(root_dir, "node_modules", "@vue", "typescript-plugin")

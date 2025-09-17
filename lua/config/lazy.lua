@@ -30,6 +30,7 @@ vim.o.completeopt = "menu,menuone,fuzzy,preview"
 vim.o.winborder = "rounded"
 vim.o.termguicolors = true
 vim.o.smartindent = false
+vim.o.splitkeep = "cursor"
 
 -- Setup lazy.nvim
 require("lazy").setup({
