@@ -3,9 +3,9 @@ return {
 	lazy = true,
 	cmd = "Copilot",
 	event = "InsertEnter",
-	dependencies = {
-		"giuxtaposition/blink-cmp-copilot",
-	},
+	--dependencies = {
+	--	"giuxtaposition/blink-cmp-copilot",
+	--},
 	config = function()
 		require("copilot").setup({
 			suggestion = { enabled = false }, -- Disable inline suggestions since using blink

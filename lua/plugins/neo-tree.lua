@@ -10,8 +10,8 @@ return {
 	lazy = false, -- neo-tree will lazily load itself
 	keys = {
 		{ "<leader>e",  "<cmd>Neotree toggle<cr>", desc = "Explorer: Toggle" },
-		{ "<leader>o",  "<cmd>Neotree focus<cr>",  desc = "Explorer: Focus" },
-		{ "<leader>fe", "<cmd>Neotree reveal<cr>", desc = "Explorer: Reveal File" },
+		--{ "<leader>o",  "<cmd>Neotree focus<cr>",  desc = "Explorer: Focus" },
+		{ "<leader>ef", "<cmd>Neotree reveal<cr>", desc = "Explorer: Reveal File" },
 	},
 	---@module 'neo-tree'
 	---@type neotree.Config

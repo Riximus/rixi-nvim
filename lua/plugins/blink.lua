@@ -2,7 +2,10 @@ return {
 	"saghen/blink.cmp",
 	version = "1.*", -- use a tagged release
 	event = { "InsertEnter", "CmdlineEnter" },
-	dependencies = { "rafamadriz/friendly-snippets" },
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		"giuxtaposition/blink-cmp-copilot",
+	},
 	opts = {
 		keymap = {
 			preset = "default",

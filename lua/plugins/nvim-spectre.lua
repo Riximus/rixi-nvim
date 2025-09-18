@@ -4,10 +4,10 @@ return {
 		"nvim-lua/plenary.nvim",
 	},
 	keys = {
-		{ "<leader>S",  function() require("spectre").toggle() end,                        desc = "Toggle Spectre" },
+		{ "<leader>S",  function() require("spectre").toggle() end,                            desc = "Toggle Spectre" },
 		{ "<leader>sw", function() require("spectre").open_visual({ select_word = true }) end, desc = "Search current word" },
-		{ "<leader>sw", function() require("spectre").open_visual() end,                   mode = "v",                     desc = "Search current word" },
-		{ "<leader>sp", function() require("spectre").open_file_search() end,              desc = "Search in current file" },
+		{ "<leader>sw", function() require("spectre").open_visual() end,                       mode = "v",                     desc = "Search current word" },
+		{ "<leader>sf", function() require("spectre").open_file_search() end,                  desc = "Search in current file" },
 	},
 	config = true, -- Uses default setup
 }

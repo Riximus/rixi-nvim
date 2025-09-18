@@ -60,9 +60,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				{ buffer = buf, desc = "LSP: Signature help" })
 		end
 
+		-- enable inlay hints by default if supported
+		if vim.lsp.inlay_hint and client.server_capabilities.inlayHintProvider then
+			vim.lsp.inlay_hint.enable(true, { bufnr = buf })
+		end
+
 		-- Inlay hints toggle
-		--vim.keymap.set("n", "<leader>uh", function() toggle_inlay(buf) end,
-		--	{ buffer = buf, desc = "LSP: Toggle inlay hints" })
+		vim.keymap.set("n", "<leader>uh", function()
+			local ih = vim.lsp.inlay_hint
+			ih.enable(not ih.is_enabled({ bufnr = buf }), { bufnr = buf })
+		end, { buffer = buf, desc = "LSP: Toggle inlay hints" })
 	end,
 })
 
