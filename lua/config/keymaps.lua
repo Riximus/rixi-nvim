@@ -26,3 +26,15 @@ vim.keymap.set("n", "<Tab>9", "9gt", { desc = "Go to tab 9" })
 
 -- Select all
 vim.keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
+
+-- Normal mode mappings
+vim.keymap.set("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clear search highlights" })
+
+-- Center screen when jumping
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
+
+-- Delete without yanking
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })

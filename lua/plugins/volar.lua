@@ -5,7 +5,7 @@ return {
 		local lspconfig = require("lspconfig")
 
 		-- VOLAR: template intelligence + TS inlay hints; hybrid mode OFF
-		lspconfig.volar.setup({
+		vim.lsp.config("vue_ls", {
 			init_options = { vue = { hybridMode = false } },
 			settings = {
 				typescript = {
@@ -21,7 +21,7 @@ return {
 		})
 
 		-- TS_LS: TypeScript server with Vue TS plugin, and full inlay hints
-		lspconfig.ts_ls.setup({
+		--[[lspconfig.ts_ls.setup({
 			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 			init_options = {
 				plugins = {
@@ -49,6 +49,6 @@ return {
 					},
 				},
 			},
-		})
+		})]] --
 	end,
 }

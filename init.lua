@@ -73,6 +73,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+-- Create undo directory if it doesn't exist
+local undodir = vim.fn.expand("~/.vim/undodir")
+if vim.fn.isdirectory(undodir) == 0 then
+	vim.fn.mkdir(undodir, "p")
+end
 
 
 -- Minimal format-on-save (safe default; remove if you prefer manual formatting)

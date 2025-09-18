@@ -23,14 +23,38 @@ vim.g.maplocalleader = "\\"
 
 vim.o.number = true
 vim.o.wrap = false
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
 vim.o.signcolumn = "yes"
 vim.o.completeopt = "menu,menuone,fuzzy,preview"
 vim.o.winborder = "rounded"
 vim.o.termguicolors = true
-vim.o.smartindent = false
+vim.o.smartindent = true
+vim.o.autoindent = true
 vim.o.splitkeep = "cursor"
+vim.o.scrolloff = 10
+vim.o.ignorecase = true -- Not case sensitive searching
+vim.o.smartcase = true  -- Case sensitive if expression has uppercase
+vim.o.incsearch = true
+vim.o.showmatch = true
+vim.o.undofile = true
+vim.o.undodir = vim.fn.expand("~/.nvim/undodir")
+vim.o.updatetime = 300
+vim.o.autoread = true
+vim.o.errorbells = false
+vim.o.hidden = true                   -- Allow hidden buffers
+vim.o.backspace = "indent,eol,start"
+vim.o.autochdir = false               -- Don't auto change directory
+vim.opt.iskeyword:append("-")           -- Treat dash as part of word
+vim.opt.path:append("**")               -- Include subdirectories in search
+vim.opt.clipboard:append("unnamedplus") -- Use system clipboard
+vim.o.modifiable = true               -- Allow buffer midifications
+
+-- Performance improvements
+vim.opt.redrawtime = 10000
+vim.opt.maxmempattern = 20000
+
+vim.api.nvim_set_hl(0, "LspInlayHint", { italic = true })
 
 -- Setup lazy.nvim
 require("lazy").setup({
