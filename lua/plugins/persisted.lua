@@ -20,6 +20,15 @@ return {
 	},
 	config = function(_, opts)
 		require("persisted").setup(opts)
+
+		-- Notify whenever a session is saved (manual or autosave during the session)
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "PersistedSavePost",
+			callback = function()
+				vim.notify("Session saved ✔", vim.log.levels.INFO, { title = "Persisted" })
+			end,
+		})
+
 		pcall(function() require("telescope").load_extension("persisted") end)
 	end,
 }
