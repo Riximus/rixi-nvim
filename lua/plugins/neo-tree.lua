@@ -6,6 +6,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
+		"folke/snacks.nvim",
 	},
 	lazy = false, -- neo-tree will lazily load itself
 	keys = {
@@ -31,4 +32,18 @@ return {
 			},
 		},
 	},
+	-- Forward Neo-tree's rename/move events to Snacks.rename
+	config = function(_, opts)
+		local function on_move(data)
+			-- LSP/workspace-aware rename after the FS op
+			Snacks.rename.on_rename_file(data.source, data.destination)
+		end
+
+		local events = require("neo-tree.events")
+		opts.event_handlers = opts.event_handlers or {}
+		table.insert(opts.event_handlers, { event = events.FILE_MOVED, handler = on_move })
+		table.insert(opts.event_handlers, { event = events.FILE_RENAMED, handler = on_move })
+
+		require("neo-tree").setup(opts)
+	end,
 }

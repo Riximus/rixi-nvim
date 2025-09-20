@@ -36,5 +36,18 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" }
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
 
+-- Duplicate current line below (Normal and visual mode)
+vim.keymap.set("n", "<leader>dd", "<Cmd>t.<CR>", { desc = "Duplicate line below" })
+vim.keymap.set("x", "<leader>dd", ":'<,'>t'><CR>", { desc = "Duplicate selection below" })
+-- Duplicate current line above (Normal and visual mode)
+vim.keymap.set("n", "<leader>dD", "<Cmd>t-1<CR>", { desc = "Duplicate line above" })
+vim.keymap.set("x", "<leader>dD", ":'<,'>t-1<CR>", { desc = "Duplicate selection above" })
+
 -- Delete without yanking
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
+
+-- Delete ALL marks: buffer-local (a–z), global/project (A–Z), and numbered (0–9)
+vim.keymap.set("n", "<leader>mX", function()
+	vim.cmd('delmarks! | delmarks A-Z0-9')
+	pcall(vim.notify, "All marks deleted (a–z, A–Z, 0–9)", vim.log.levels.INFO, { title = "Marks" })
+end, { desc = "Delete ALL marks (buffer/global/0–9)" })

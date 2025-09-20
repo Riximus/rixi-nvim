@@ -8,6 +8,7 @@ return {
 		require("notify").setup({
 			-- Animation style
 			stages = "fade_in_slide_out",
+			render = "compact",
 		})
 	end
 }

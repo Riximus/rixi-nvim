@@ -42,13 +42,13 @@ vim.o.undodir = vim.fn.expand("~/.nvim/undodir")
 vim.o.updatetime = 300
 vim.o.autoread = true
 vim.o.errorbells = false
-vim.o.hidden = true                   -- Allow hidden buffers
+vim.o.hidden = true                     -- Allow hidden buffers
 vim.o.backspace = "indent,eol,start"
-vim.o.autochdir = false               -- Don't auto change directory
+vim.o.autochdir = false                 -- Don't auto change directory
 vim.opt.iskeyword:append("-")           -- Treat dash as part of word
 vim.opt.path:append("**")               -- Include subdirectories in search
 vim.opt.clipboard:append("unnamedplus") -- Use system clipboard
-vim.o.modifiable = true               -- Allow buffer midifications
+vim.o.modifiable = true                 -- Allow buffer midifications
 
 -- Performance improvements
 vim.opt.redrawtime = 10000

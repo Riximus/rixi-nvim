@@ -2,7 +2,7 @@ return {
 	"j-hui/fidget.nvim",
 	opts = {
 		notification = {
-			override_vim_notify = true,
+			override_vim_notify = false,
 		}
 		--notification = {
 		--	override_vim_notify = false, -- keep nvim-notify as the main backend
