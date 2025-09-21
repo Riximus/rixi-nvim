@@ -14,10 +14,10 @@ return {
 		},
 	},
 
-	-- runs before the plugin loads; good spot for your autocmd
+	-- runs before the plugin loads; 	
 	init = function()
 		vim.api.nvim_create_autocmd("FileType", {
-			pattern = { "neo-tree", "NvimTree", "help", "Trouble", "alpha" },
+			pattern = { "neo-tree", "NeoTree", "NvimTree", "help", "Trouble", "alpha", "Overseer", "nvim-dap-ui" },
 			callback = function()
 				vim.b.focus_disable = true
 			end,

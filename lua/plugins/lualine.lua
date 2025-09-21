@@ -37,19 +37,31 @@ return {
 
 		require("lualine").setup({
 			options = {
-				theme = bubbles_theme,
-				component_separators = "",
+				theme = "auto",
+				component_separators = "|",
 				section_separators = { left = "", right = "" },
 				globalstatus = true, -- optional: single statusline for all windows (Neovim 0.7+)
 			},
 			sections = {
 				lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
-				lualine_b = { "filename", "branch", "diagnostics" },
+				lualine_b = {
+					"searchcount",
+					{
+						"filename",
+						symbols = { modified = " ", readonly = " " },
+					},
+					"diagnostics",
+					{
+						"diff",
+						symbols = { added = '󰐕 ', modified = '󰏫 ', removed = '󰍴 ' },
+					},
+					"branch",
+				},
 				lualine_c = {
 					"%=", -- add your center components here
 					"lsp_status",
 				},
-				lualine_x = {},
+				lualine_x = { "overseer" },
 				lualine_y = { "filetype", "progress" },
 				lualine_z = {
 					{ "location", separator = { right = "" }, left_padding = 2 },

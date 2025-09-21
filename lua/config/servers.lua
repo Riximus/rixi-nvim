@@ -7,6 +7,7 @@ return {
 	-- js frameworks
 	-- React is already covered by vtsls (TSX/JSX)
 	-- vue / angular / astro / svelte / laravel
+	-- INFO: Angular: npm i -D @angular/language-service@^[version]
 	"vue_ls", "angularls", "astro", "svelte", "laravel_ls",
 	-- shells
 	-- powershell
