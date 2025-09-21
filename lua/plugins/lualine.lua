@@ -51,17 +51,14 @@ return {
 						symbols = { modified = " ", readonly = " " },
 					},
 					"diagnostics",
-					{
-						"diff",
-						symbols = { added = '󰐕 ', modified = '󰏫 ', removed = '󰍴 ' },
-					},
-					"branch",
 				},
 				lualine_c = {
 					"%=", -- add your center components here
-					"lsp_status",
+					{ "buffers", separator = { left = " " } }
 				},
-				lualine_x = { "overseer" },
+				lualine_x = { "overseer",
+					{ "lsp_status", seperator = nil },
+				},
 				lualine_y = { "filetype", "progress" },
 				lualine_z = {
 					{ "location", separator = { right = "" }, left_padding = 2 },
@@ -75,7 +72,27 @@ return {
 				lualine_y = {},
 				lualine_z = { "location" },
 			},
-			tabline = {},
+			tabline = {
+				lualine_a = { { "branch", separator = { left = "" }, right_padding = 2 } },
+				lualine_b = {
+					{
+						"diff",
+						symbols = { added = '󰐕 ', modified = '󰏫 ', removed = '󰍴 ' },
+					},
+				},
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = {}
+			},
+			winbar = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = {}
+			},
 			extensions = {},
 		})
 	end,
