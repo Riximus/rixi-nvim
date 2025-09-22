@@ -2,12 +2,25 @@
 vim.keymap.set("n", "<leader>w", ":write<CR>")
 vim.keymap.set("n", "<leader>q", ":quit<CR>")
 
+-- Split window
+vim.keymap.set("n", "_", ":split<CR>", { desc = "Horizontal Split" })
+vim.keymap.set("n", "|", ":vsplit<CR>", { desc = "Vertical Split" })
+
+-- Resize window
+--keymap.set("n", "<C-w><left>", "<C-w><")
+--keymap.set("n", "<C-w><right>", "<C-w>>")
+--keymap.set("n", "<C-w><up>", "<C-w>+")
+--keymap.set("n", "<C-w><down>", "<C-w>-")
+
+-- Increment/decrement numbers
+vim.keymap.set("n", "+", "<C-a>", { desc = "Increment number" })
+vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement number" })
+
 -- Tab navigation
 --vim.keymap.set("n", "<leader>tn", ":tabnext<CR>", { desc = "Next Tab" })
 --vim.keymap.set("n", "<leader>tp", ":tabprevious<CR>", { desc = "Previous Tab" })
 --vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { desc = "Close Tab" })
 --vim.keymap.set("n", "<leader>to", ":tabonly<CR>", { desc = "Close Others" })
-
 vim.keymap.set("n", "<Tab><Tab>", ":tabnext<CR>", { desc = "Next Tab" })
 vim.keymap.set("n", "<S-Tab>", ":tabprevious<CR>", { desc = "Previous Tab" })
 vim.keymap.set("n", "<Tab>c", ":tabclose<CR>", { desc = "Close Tab" })
@@ -27,7 +40,7 @@ vim.keymap.set("n", "<Tab>9", "9gt", { desc = "Go to tab 9" })
 -- Select all
 vim.keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
--- Normal mode mappings
+-- Clear search highlights
 vim.keymap.set("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clear search highlights" })
 
 -- Center screen when jumping
@@ -46,8 +59,11 @@ vim.keymap.set("x", "<leader>dD", ":'<,'>t-1<CR>", { desc = "Duplicate selection
 -- Delete without yanking
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
 
+-- Delete a word backwards
+vim.keymap.set("n", "<leader>dw", 'vb"_d', { desc = "Delete word backwards" })
+
 -- Delete ALL marks: buffer-local (a–z), global/project (A–Z), and numbered (0–9)
 vim.keymap.set("n", "<leader>mX", function()
-	vim.cmd('delmarks! | delmarks A-Z0-9')
+	vim.cmd("delmarks! | delmarks A-Z0-9")
 	pcall(vim.notify, "All marks deleted (a–z, A–Z, 0–9)", vim.log.levels.INFO, { title = "Marks" })
 end, { desc = "Delete ALL marks (buffer/global/0–9)" })
