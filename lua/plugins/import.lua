@@ -9,6 +9,7 @@ return {
 	opts = {
 		picker = "telescope",
 	},
+	event = "VeryLazy",
 	keys = {
 		{
 			"<leader>i",

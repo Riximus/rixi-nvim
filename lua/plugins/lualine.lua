@@ -1,7 +1,13 @@
 return {
 	'nvim-lualine/lualine.nvim',
+	event = "VeryLazy",
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
-	config = function()
+
+	-- Let Lazy call: require("lualine").setup(opts)
+	main = "lualine",
+
+	-- Everything that used to be in config() is now here
+	opts = function()
 		-- Bubbles config for lualine
 		-- Author: lokesh-krishna
 		-- MIT license, see LICENSE for more details.
@@ -35,7 +41,50 @@ return {
 			},
 		}
 
-		require("lualine").setup({
+		-- Show active local (a-z) marks in current buffer and global (A-Z) marks
+		local function show_active_marks()
+			local buf              = vim.api.nvim_get_current_buf()
+
+			-- Safely fetch marks (Neovim 0.9+: :h getmarklist())
+			local ok_loc, loc_list = pcall(vim.fn.getmarklist, buf)
+			local ok_glo, glo_list = pcall(vim.fn.getmarklist)
+
+			local locals, globals  = {}, {}
+
+			local function collect(list, bucket, pat)
+				if type(list) ~= "table" then return end
+				for _, m in ipairs(list) do
+					-- m.mark can look like "'a" or "a"; grab the letter
+					local name = type(m.mark) == "string" and m.mark:match("[A-Za-z]") or nil
+					if name and name:match(pat) then bucket[name] = true end
+				end
+			end
+
+			if ok_loc then collect(loc_list, locals, "[a-z]") end
+			if ok_glo then collect(glo_list, globals, "[A-Z]") end
+
+			local function ordered(keys, alphabet)
+				local out = {}
+				for c in alphabet:gmatch(".") do
+					if keys[c] then table.insert(out, c) end
+				end
+				return table.concat(out, " ")
+			end
+
+			local local_str  = ordered(locals, "abcdefghijklmnopqrstuvwxyz")
+			local global_str = ordered(globals, "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+			if local_str == "" and global_str == "" then
+				return "" -- keep it silent if no marks are set
+			end
+
+			local parts = {}
+			if local_str ~= "" then table.insert(parts, " " .. local_str) end
+			if global_str ~= "" then table.insert(parts, " " .. global_str) end
+			return table.concat(parts, " ")
+		end
+
+		return {
 			options = {
 				theme = "auto",
 				component_separators = "|",
@@ -49,17 +98,17 @@ return {
 					{
 						"filename",
 						symbols = { modified = " ", readonly = " " },
+						path = 1,
 					},
 					"diagnostics",
 				},
 				lualine_c = {
 					"%=", -- add your center components here
-					{ "buffers", separator = { left = " " } }
+					--{ "buffers", separator = { left = " " } }
+					{ show_active_marks, separator = { left = " " }, padding = 0 },
 				},
-				lualine_x = { "overseer",
-					{ "lsp_status", seperator = nil },
-				},
-				lualine_y = { "filetype", "progress" },
+				lualine_x = { { "lsp_status", separator = "" }, },
+				lualine_y = { "overseer", "filetype", "progress" },
 				lualine_z = {
 					{ "location", separator = { right = "" }, left_padding = 2 },
 				},
@@ -85,15 +134,17 @@ return {
 				lualine_y = {},
 				lualine_z = {}
 			},
-			winbar = {
-				lualine_a = {},
-				lualine_b = {},
-				lualine_c = {},
-				lualine_x = {},
-				lualine_y = {},
-				lualine_z = {}
-			},
+			--
+			-- INFO: Using winbar will remove dropbar plugin :(
+			--  winbar = {
+			--    lualine_a = {},
+			--    lualine_b = {},
+			--    lualine_c = {},
+			--    lualine_x = {},
+			--    lualine_y = {},
+			--    lualine_z = {}
+			--  },
 			extensions = {},
-		})
+		}
 	end,
 }

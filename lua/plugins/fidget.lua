@@ -1,15 +1,9 @@
+-- fidget.lua  :contentReference[oaicite:3]{index=3}
 return {
 	"j-hui/fidget.nvim",
+	event = "LspAttach",
 	opts = {
-		notification = {
-			override_vim_notify = false,
-		}
-		--notification = {
-		--	override_vim_notify = false, -- keep nvim-notify as the main backend
-		--	redirect = function(msg, level, opts)
-		--		return require("fidget.integration.nvim-notify").delegate(msg, level, opts)
-		--	end,
-		--},
-		--progress = { suppress_on_insert = true },
+		notification = { override_vim_notify = false },
+		-- progress = { suppress_on_insert = true },
 	},
 }

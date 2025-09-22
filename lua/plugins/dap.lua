@@ -9,7 +9,8 @@ local js_based_languages = {
 
 return {
 	"mfussenegger/nvim-dap",
-	event = "VeryLazy",
+	lazy = true,
+	cmd = { "DapContinue", "DapToggleBreakpoint", "DapTerminate", "DapStepOver", "DapStepInto", "DapStepOut" },
 	dependencies = {
 		-- Nice UI for the debugger
 		"rcarriga/nvim-dap-ui",

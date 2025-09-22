@@ -1,8 +1,8 @@
 return {
 	"rachartier/tiny-code-action.nvim",
-	event = "LspAttach",           -- load when an LSP attaches
+	--event = "LspAttach",           -- load when an LSP attaches
 	dependencies = {
-		"nvim-lua/plenary.nvim",   -- required
+		"nvim-lua/plenary.nvim", -- required
 		"nvim-telescope/telescope.nvim", -- optional (picker)
 		-- If you prefer another picker, comment telescope and enable one of:
 		-- "ibhagwan/fzf-lua",
@@ -20,7 +20,9 @@ return {
 	keys = {
 		{
 			"<leader>ca",
-			function() require("tiny-code-action").code_action() end,
+			function()
+				require("tiny-code-action").code_action()
+			end,
 			mode = { "n", "x" },
 			desc = "Code Actions (tiny-code-action)",
 			silent = true,

@@ -1,32 +1,23 @@
+-- tiny-inline-diagnostic.lua  :contentReference[oaicite:6]{index=6}
 return {
 	"rachartier/tiny-inline-diagnostic.nvim",
-	event = "VeryLazy",
+	event = "LspAttach",
 	priority = 1000,
-	config = function()
-		require('tiny-inline-diagnostic').setup({
-			preset = "powerline",
-			transparent_bg = false,
-			-- kill the grey bar without killing the preset
-			hi = {
-				background = "NONE", -- was CursorLine
-				mixing_color = "NONE", -- don't blend with Normal
-			},
-			blend = { factor = 0.0 }, -- no extra tint
-			options = {
-				use_icons_from_diagnostic = true,
-				--set_arrow_to_diag_color = true,
-
-				throttle = 20,
-
-				-- Enable diagnostics in Insert mode
-				-- If enabled, consider setting throttle to 0 to avoid visual artifacts
-				enable_on_insert = false,
-
-				-- Enable diagnostics in Select mode (e.g., when auto-completing with Blink)
-				enable_on_select = false,
-
-			}
-		})
-		vim.diagnostic.config({ virtual_text = false }) -- Disable default virtual text
-	end
+	init = function()
+		-- Do this immediately so VT is off even before the plugin loads
+		vim.diagnostic.config({ virtual_text = false })
+	end,
+	main = "tiny-inline-diagnostic",
+	opts = {
+		preset = "powerline",
+		transparent_bg = false,
+		hi = { background = "NONE", mixing_color = "NONE" },
+		blend = { factor = 0.0 },
+		options = {
+			use_icons_from_diagnostic = true,
+			throttle = 20,
+			enable_on_insert = false,
+			enable_on_select = false,
+		},
+	},
 }

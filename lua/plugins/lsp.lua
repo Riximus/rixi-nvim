@@ -1,6 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-	lazy = false,
+	event = { "BufReadPre", "BufNewFile" },
 	--config = function()
 	--	-- after lspconfig is loaded, you can safely enable servers
 	--	vim.lsp.enable(require("config.servers"))

@@ -1,4 +1,4 @@
--- lua/plugins/neo-tree.lua
+-- neo-tree.lua  :contentReference[oaicite:2]{index=2}
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",
@@ -8,42 +8,30 @@ return {
 		"MunifTanjim/nui.nvim",
 		"folke/snacks.nvim",
 	},
-	lazy = false, -- neo-tree will lazily load itself
+	cmd = "Neotree",
 	keys = {
 		{ "<leader>e",  "<cmd>Neotree toggle<cr>", desc = "Explorer: Toggle" },
-		--{ "<leader>o",  "<cmd>Neotree focus<cr>",  desc = "Explorer: Focus" },
-		{ "<leader>ef", "<cmd>Neotree reveal<cr>", desc = "Explorer: Reveal File" },
+		{ "<leader>ef", "<cmd>Neotree reveal<cr>", desc = "Explorer: Reveal file" },
 	},
-	---@module 'neo-tree'
-	---@type neotree.Config
-	opts = {
-		window = { width = 32 },
-		filesystem = {
-			follow_current_file = { enabled = true },
-			hijack_netrw_behavior = "open_current",
-			window = {
-				mappings = {
-					-- Your old keybindings
-					["t"] = "open_tabnew", -- New tab
-					-- Additional useful mappings
-					["h"] = "open_split", -- Alternative for horizontal
-					["v"] = "open_vsplit", -- Alternative for vertical
-				},
-			},
-		},
-	},
-	-- Forward Neo-tree's rename/move events to Snacks.rename
-	config = function(_, opts)
+	main = "neo-tree",
+	opts = function()
 		local function on_move(data)
-			-- LSP/workspace-aware rename after the FS op
 			Snacks.rename.on_rename_file(data.source, data.destination)
 		end
-
 		local events = require("neo-tree.events")
-		opts.event_handlers = opts.event_handlers or {}
-		table.insert(opts.event_handlers, { event = events.FILE_MOVED, handler = on_move })
-		table.insert(opts.event_handlers, { event = events.FILE_RENAMED, handler = on_move })
-
-		require("neo-tree").setup(opts)
+		return {
+			window = { width = 32 },
+			filesystem = {
+				follow_current_file = { enabled = true },
+				hijack_netrw_behavior = "open_current",
+				window = {
+					mappings = { ["t"] = "open_tabnew", ["h"] = "open_split", ["v"] = "open_vsplit" },
+				},
+			},
+			event_handlers = {
+				{ event = events.FILE_MOVED,   handler = on_move },
+				{ event = events.FILE_RENAMED, handler = on_move },
+			},
+		}
 	end,
 }

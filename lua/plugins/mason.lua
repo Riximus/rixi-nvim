@@ -1,5 +1,9 @@
 return {
-	{ "mason-org/mason.nvim", event = "VeryLazy", opts = { ui = { border = "rounded" } } },
+	{
+		"mason-org/mason.nvim",
+		event = "VeryLazy",
+		opts = { ui = { border = "rounded" } },
+	},
 	{
 		"mason-org/mason-lspconfig.nvim",
 		event = "VeryLazy",

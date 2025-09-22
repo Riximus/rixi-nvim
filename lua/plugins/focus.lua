@@ -4,7 +4,7 @@ return {
 	event = "VeryLazy",
 
 	opts = {
-		enable = true,
+		enable = false,
 		autoresize = { enable = true },
 		ui = {
 			number = false,

@@ -5,9 +5,14 @@ return {
 	-- install jsregexp (optional!).
 	build = "make install_jsregexp",
 	dependencies = { "rafamadriz/friendly-snippets" },
-	config = function()
-		local luasnip = require("luasnip")
+	event = { "InsertEnter", "CmdlineEnter" },
 
+	-- Let Lazy call: require("luasnip").setup(opts)
+	main = "luasnip",
+
+	-- Everything that used to be in config() is now here.
+	-- Using a function lets us run the VSCode loader as a side-effect while still returning opts.
+	opts = function()
 		-- Load snippets from friendly-snippets
 		require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -15,10 +20,10 @@ return {
 		-- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./my-snippets" } })
 
 		-- Configure LuaSnip
-		luasnip.setup({
+		return {
 			history = true,
 			delete_check_events = "TextChanged",
 			region_check_events = "CursorMoved",
-		})
+		}
 	end,
 }

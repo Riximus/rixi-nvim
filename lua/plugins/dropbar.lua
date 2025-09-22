@@ -1,14 +1,13 @@
 return {
 	'Bekaboo/dropbar.nvim',
-	-- optional, but required for fuzzy finder support
+	event = "LspAttach",
 	dependencies = {
 		'nvim-telescope/telescope-fzf-native.nvim',
 		build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
 	},
-	config = function()
-		local dropbar_api = require('dropbar.api')
-		vim.keymap.set('n', '<Leader>;', dropbar_api.pick, { desc = 'Pick symbols in winbar' })
-		--vim.keymap.set('n', '[;', dropbar_api.goto_context_start, { desc = 'Go to start of current context' })
-		--vim.keymap.set('n', '];', dropbar_api.select_next_context, { desc = 'Select next context' })
-	end
+	keys = {
+		{ '<Leader>;', mode = 'n', function() require('dropbar.api').pick() end, desc = 'Pick symbols in winbar' },
+		--{ '[;', desc = 'Go to start of current context' },
+		--{ '];', desc = 'Select next context' },
+	}
 }

@@ -1,14 +1,14 @@
 return {
-	'rcarriga/nvim-notify',
-	config = function()
-		-- Set nvim-notify as the default notification handler
-		vim.notify = require("notify")
-
-		-- Optional: Configure nvim-notify settings
-		require("notify").setup({
-			-- Animation style
-			stages = "fade_in_slide_out",
-			render = "compact",
-		})
-	end
+	"rcarriga/nvim-notify",
+	init = function()
+		local lazy = require("lazy")
+		vim.notify = function(...)
+			lazy.load({ plugins = { "nvim-notify" } })
+			return require("notify")(...)
+		end
+	end,
+	opts = {
+		stages = "fade_in_slide_out",
+		render = "compact",
+	},
 }

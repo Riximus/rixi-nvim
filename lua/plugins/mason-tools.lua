@@ -1,13 +1,13 @@
+-- mason-tools.lua
 return {
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	event = "VeryLazy",
-	dependencies = { "mason-org/mason.nvim" },
-	opts = function()
-		return {
-			ensure_installed = require("config.tools"),
-			run_on_start = true,
-			auto_update = false,
-			start_delay = 0, -- you can bump this if you want it to run after UI is up
-		}
-	end,
+	cmd = { "MasonToolsInstall", "MasonToolsUpdate", "MasonToolsClean", "MasonToolsInstallSync" },
+	dependencies = { "mason-org/mason.nvim" }, -- mason is cmd-loaded too
+	opts = {
+		ensure_installed = require("config.tools"),
+		run_on_start = true,
+		auto_update = false,
+		start_delay = 3000,
+	},
 }
