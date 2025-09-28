@@ -23,11 +23,11 @@ return {
 		},
 		keys = {
 			-- jump to the nearest context line above
-			{
+			--[[{
 				"[c",
 				function() require("treesitter-context").go_to_context(vim.v.count1) end,
 				desc = "TS Context: go to parent"
-			},
+			},]]
 			-- quick toggle
 			{ "<leader>uC", "<cmd>TSContext toggle<cr>", desc = "Toggle Treesitter Context" },
 		},

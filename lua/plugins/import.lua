@@ -1,15 +1,15 @@
 return {
-	'piersolenski/import.nvim',
+	"piersolenski/import.nvim",
 	dependencies = {
 		-- One of the following pickers is required:
-		'nvim-telescope/telescope.nvim',
+		"nvim-telescope/telescope.nvim",
 		-- 'folke/snacks.nvim',
 		-- 'ibhagwan/fzf-lua',
 	},
 	opts = {
 		picker = "telescope",
 	},
-	event = "VeryLazy",
+	lazy = true,
 	keys = {
 		{
 			"<leader>i",

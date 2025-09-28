@@ -3,7 +3,6 @@ return {
 	dependencies = {
 		"MunifTanjim/nui.nvim",
 	},
-	cmd = { "DBEE" },
 	build = function()
 		-- Install tries to automatically detect the install method.
 		-- if it fails, try calling it with one of these parameters:

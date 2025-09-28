@@ -4,10 +4,10 @@ return {
 	priority = 10, -- lets it hook common keys before others
 	opts = {
 		overwrite = {
-			auto_map = true,             -- let plugin wire the usual keys
-			yank     = { enabled = true }, -- covers normal yanks *and* deletes that yank
-			paste    = { enabled = false }, -- p / P glimmer out of the box
-			undo     = {                 -- OFF by default -> turn it on
+			auto_map = true, -- let plugin wire the usual keys
+			yank = { enabled = true }, -- covers normal yanks *and* deletes that yank
+			paste = { enabled = false }, -- p / P glimmer out of the box
+			undo = { -- OFF by default -> turn it on
 				enabled = true,
 				-- Defaults are fine, but here’s a gentle fade that reads well:
 				default_animation = {
@@ -16,7 +16,7 @@ return {
 				},
 				undo_mapping = "u",
 			},
-			redo     = {
+			redo = {
 				enabled = true,
 				default_animation = {
 					name = "fade",

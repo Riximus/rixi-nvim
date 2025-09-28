@@ -74,6 +74,11 @@ J : join two lines
 
 gJ : no whitespace join two lines
 
+CTRL-q : (In Telescope) send to the quickfix list
+
+- :cdo %s/before/after/g
+- :cfdo %s/before/after/g (same as above but executes command for every file in the quickfix list)
+
 Mode Explanations:
 
 n = Normal mode (default mode, for navigation and commands)

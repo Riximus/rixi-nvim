@@ -86,7 +86,13 @@ return {
 			},
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "copilot", "i18n" },
+			default = {
+				"lsp",
+				"path",
+				"snippets",
+				"buffer",
+				"copilot", --[["i18n"]]
+			},
 			providers = {
 				copilot = {
 					name = "copilot",
@@ -95,13 +101,13 @@ return {
 					async = true,
 				},
 				lsp = { fallbacks = {} },
-				i18n = {
+				--[[i18n = {
 					name = "i18n",
 					module = "i18n.integration.blink_source",
 					opts = {
 						-- future options can be placed here
 					},
-				},
+				},]]
 			},
 		},
 		fuzzy = { implementation = "prefer_rust_with_warning" },

@@ -10,7 +10,7 @@ return {
 	},
 	cmd = "Neotree",
 	keys = {
-		{ "<leader>e",  "<cmd>Neotree toggle<cr>", desc = "Explorer: Toggle" },
+		{ "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Explorer: Toggle" },
 		{ "<leader>ef", "<cmd>Neotree reveal<cr>", desc = "Explorer: Reveal file" },
 	},
 	main = "neo-tree",
@@ -29,7 +29,7 @@ return {
 				},
 			},
 			event_handlers = {
-				{ event = events.FILE_MOVED,   handler = on_move },
+				{ event = events.FILE_MOVED, handler = on_move },
 				{ event = events.FILE_RENAMED, handler = on_move },
 			},
 		}
