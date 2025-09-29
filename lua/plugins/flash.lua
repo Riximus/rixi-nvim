@@ -5,7 +5,7 @@ return {
 	opts = {
 		modes = {
 			char = {
-				enabled = false, -- This disables flash enhancement of f, F, t, T
+				enabled = true, -- This disables/enables flash enhancement of f, F, t, T
 			},
 		},
 	},
