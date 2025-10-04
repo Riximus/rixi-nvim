@@ -13,8 +13,8 @@ return {
 			directory_expanded = " ",
 			directory_empty = " ",
 		},
-		--[[win = {
+		win = {
 			kind = "float",
-		},]]
+		},
 	},
 }

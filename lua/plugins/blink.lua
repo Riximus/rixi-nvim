@@ -10,7 +10,17 @@ return {
 	opts = {
 		keymap = {
 			preset = "default",
-			["<Tab>"] = { "accept", "fallback" },
+			["<Tab>"] = {
+				"snippet_forward",
+				function()
+					return require("sidekick").nes_jump_or_apply()
+				end, -- jump/apply NES if present
+				"accept", -- otherwise accept completion
+				--	function()
+				--		return vim.lsp.inline_completion.get()
+				--	end, -- native inline completion (optional)
+				"fallback",
+			},
 			["<C-d>"] = { "scroll_documentation_down", "fallback" },
 			["<C-u>"] = { "scroll_documentation_up", "fallback" },
 		},

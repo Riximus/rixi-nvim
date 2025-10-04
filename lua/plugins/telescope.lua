@@ -74,13 +74,13 @@ return {
 			end,
 			desc = "Recent files (cwd)",
 		},
-		{
-			"<leader><space>",
-			function()
-				require("telescope.builtin").buffers()
-			end,
-			desc = "Switch buffer",
-		},
+		--	{
+		--		"<leader><space>",
+		--		function()
+		--			require("telescope.builtin").buffers()
+		--		end,
+		--		desc = "Switch buffer",
+		--	},
 	},
 	opts = function(_, opts)
 		opts = opts or {}

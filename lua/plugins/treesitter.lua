@@ -5,21 +5,44 @@ return {
 	opts = {
 		ensure_installed = {
 			-- Neovim / basics
-			"lua", "vim", "vimdoc",
+			"lua",
+			"vim",
+			"vimdoc",
 			-- shells / docs / config
-			"bash", "markdown", "markdown_inline", "yaml", "toml",
+			"bash",
+			"markdown",
+			"markdown_inline",
+			"yaml",
+			"toml",
 			-- web / frameworks
-			"html", "css", "scss", "javascript", "typescript", "tsx",
-			"vue", "svelte", "astro",
+			"html",
+			"css",
+			"scss",
+			"javascript",
+			"typescript",
+			"tsx",
+			"vue",
+			"svelte",
+			"astro",
 			-- backend / systems
-			"go", "gomod", "gowork", "gosum",
+			"go",
+			"gomod",
+			"gowork",
+			"gosum",
 			"python",
-			"c", "cpp", "c_sharp",
+			"c",
+			"cpp",
+			"c_sharp",
 			"rust",
 			-- infra / data
-			"dockerfile", "graphql", "json", "json5", "jsonc",
+			"dockerfile",
+			"graphql",
+			"json",
+			"json5",
+			"jsonc",
 			-- optional if you added PHP / PowerShell
-			"php", "powershell",
+			"php",
+			"powershell",
 		},
 		auto_install = true, -- install missing parsers on first use
 		sync_install = false, -- async is fine
