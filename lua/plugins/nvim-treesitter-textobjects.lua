@@ -13,12 +13,12 @@ return {
 				select = {
 					enable = true,
 					lookahead = true, -- jump forward to the next textobject automatically
-					--keymaps = {
-					--	["af"] = "@function.outer", -- a function
-					--	["if"] = "@function.inner", -- inner function
-					--	["ac"] = "@class.outer", -- a class
-					--	["ic"] = "@class.inner", -- inner class
-					--},
+					keymaps = {
+						["af"] = "@function.outer", -- a function
+						["if"] = "@function.inner", -- inner function
+						--	["ac"] = "@class.outer", -- a class
+						--	["ic"] = "@class.inner", -- inner class
+					},
 				},
 			},
 		})
