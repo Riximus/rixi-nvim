@@ -1,7 +1,14 @@
 return {
 	"folke/sidekick.nvim",
 	event = "VeryLazy",
-	opts = {}, -- tweak as you like
+	opts = {
+		cli = {
+			prompts = {
+				refactor = "Please refactor {this} to be more maintainable",
+				security = "Review {file} for security vulnerabilities",
+			}
+		}
+	}, -- tweak as you like
 	keys = {
 		{
 			"<leader>aa",
@@ -18,6 +25,13 @@ return {
 			desc = "Sidekick: Select CLI",
 		},
 		-- NOTE: CTRL + < (or I guess \) + n to be able to switch focus back to the terminal
+		-- 	q (in normal mode): Hide the terminal window.
+		-- <c-q> (in terminal mode): Hide the terminal window.
+		-- <c-w>p: Leave the CLI window.
+		-- <c-p>: Insert prompt or context.
+		{
+			"<leader>qq", "hide", mode = "n", desc = "Sidekick Hide CLI"
+		},
 		{
 			"<c-.>",
 			function()
