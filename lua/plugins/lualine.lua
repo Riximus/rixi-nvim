@@ -107,10 +107,27 @@ return {
 					--{ "buffers", separator = { left = " " } }
 					{ show_active_marks, separator = { left = " " }, padding = 0 },
 				},
-				lualine_x = { { "lsp_status", separator = "" }, },
-				lualine_y = { "overseer", "filetype", "progress" },
+				lualine_x = {
+					-- Sidekick statusline
+					{
+						function()
+							return " "
+						end,
+						color = function()
+							local status = require("sidekick.status").get()
+							if status then
+								return status.kind == "Error" and "DiagnosticError" or status.busy and "DiagnosticWarn" or "Special"
+							end
+						end,
+						cond = function()
+							local status = require("sidekick.status")
+							return status.get() ~= nil
+						end,
+					}
+				},
+				lualine_y = { "overseer", "filetype", "progress", "location" },
 				lualine_z = {
-					{ "location", separator = { right = "" }, left_padding = 2 },
+					{ "datetime", style = "%H:%M", separator = { right = "" }, left_padding = 2 },
 				},
 			},
 			inactive_sections = {
@@ -132,7 +149,7 @@ return {
 				lualine_c = {},
 				lualine_x = {},
 				lualine_y = {},
-				lualine_z = {}
+				lualine_z = { { "lsp_status", separator = { right = "" }, left_padding = 2 } }
 			},
 			--
 			-- INFO: Using winbar will remove dropbar plugin :(
